@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.greig.foodery.R;
+import com.greig.foodery.project39.Adaptor.CategoryAdaptor;
+import com.greig.foodery.project39.Domain.CategoryDomain;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
@@ -24,5 +28,15 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerViewCategoryList = findViewById(R.id.recyclerView);
         recyclerViewCategoryList.setLayoutManager(linearLayoutManager);
+
+        ArrayList<CategoryDomain> category = new ArrayList<>();
+        category.add(new CategoryDomain("Pizza", "cat_1"));
+        category.add(new CategoryDomain("Burger", "cat_2"));
+        category.add(new CategoryDomain("Hotdog", "cat_3"));
+        category.add(new CategoryDomain("Drink", "cat_4"));
+        category.add(new CategoryDomain("Donut", "cat_5"));
+
+        adapter = new CategoryAdaptor(category);
+        recyclerViewCategoryList.setAdapter(adapter);
     }
 }
